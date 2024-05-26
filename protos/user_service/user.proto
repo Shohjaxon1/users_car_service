@@ -1,0 +1,86 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "user";
+
+service UserService {
+    rpc Create(User) returns (User);
+    rpc GetById(GetByIdRequest) returns (User);
+    rpc GetUserWithCars(GetByIdRequest) returns (AllUsersWithCar);
+    rpc GetAllUserWithCars(GetAllRequest) returns (AllUsersWithCar);
+    rpc GetByPhoneNumber(GetByPhoneNumberRequest) returns (User);
+    rpc GetAll(GetAllRequest) returns (AllUsers);
+    rpc UpdateUser(User) returns (User);
+    rpc DeleteUser(GetByIdRequest) returns (User);
+}
+
+service CarService {
+    rpc CreateCar(Car) returns (Car);
+    rpc GetByCarId(GetByIdRequest) returns (Car);
+    rpc GetAllCars(GetAllRequest) returns (AllCars);
+    rpc UpdateCar(Car) returns (Car);
+    rpc DeleteCar(GetByIdRequest) returns (Car);
+}
+
+message User {
+    string id = 1;
+    string full_name = 2;
+    string username = 3;
+    string phone_number = 4;
+    string created_at = 8;
+    string updated_at = 9;
+}
+
+message GetByIdRequest {
+    string id = 1;
+}
+
+message GetAllRequest {
+    string page = 1;
+    string limit = 2;
+}
+
+message AllUsers {
+    repeated User users = 1; 
+}
+
+message AllUsersWithCar {
+    repeated User users = 1; 
+    repeated Car cars = 2; 
+}
+
+message GetByPhoneNumberRequest {
+    string phone_number = 1;       
+}
+
+message UsersCar {
+    string id = 1;
+    string full_name = 2;
+    string username = 3;
+    string phone_number = 4;
+    string created_at = 5;
+    string updated_at = 6;
+    string carsid = 7;
+    string model = 8;
+    string color = 9;
+    string year = 10;
+    string price = 11;
+    string car_created_at = 12;
+    string car_updated_at = 13;
+
+}
+
+message Car {
+    string id = 1;
+    string model = 2;
+    string color = 3;
+    string year = 4;
+    string price = 5;
+    string created_at = 8;
+    string updated_at = 9;
+}
+
+message AllCars {
+    repeated Car cars = 1;      
+}
