@@ -2,8 +2,8 @@ package postgres
 
 import (
 	"database/sql"
+	pb "student-service/genproto/user_service"
 	"time"
-	pb "users_car_service/genproto/user_service"
 
 	"github.com/jmoiron/sqlx"
 	"github.com/spf13/cast"
@@ -20,6 +20,25 @@ func NewUserRepo(db *sqlx.DB) *userRepo {
 
 // Create inserts a new user into the database
 func (r *userRepo) Create(user *pb.User) (*pb.User, error) {
+	query := `
+		INSERT INTO users (id, full_name, username, phone_number, created_at) 
+		VALUES ($1, $2, $3, $4, $5) 
+		RETURNING id, full_name, username, phone_number, created_at
+	`
+	err := r.db.QueryRow(query, user.Id, user.FullName, user.Username, user.PhoneNumber, time.Now()).Scan(
+		&user.Id,
+		&user.FullName,
+		&user.Username,
+		&user.PhoneNumber,
+		&user.CreatedAt,
+	)
+	if err != nil {
+		return nil, err
+	}
+	return user, nil
+}
+
+func (r *userRepo) GiveCarToUser(user *pb.User) (*pb.User, error) {
 	query := `
 		INSERT INTO users (id, full_name, username, phone_number, created_at) 
 		VALUES ($1, $2, $3, $4, $5) 

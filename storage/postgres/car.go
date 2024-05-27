@@ -2,8 +2,8 @@ package postgres
 
 import (
 	"database/sql"
+	pb "student-service/genproto/user_service"
 	"time"
-	pb "users_car_service/genproto/user_service"
 
 	"github.com/spf13/cast"
 )

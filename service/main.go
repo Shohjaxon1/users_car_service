@@ -1,8 +1,8 @@
 package service
 
 import (
-	l "users_car_service/pkg/logger"
-	"users_car_service/storage"
+	l "student-service/pkg/logger"
+	"student-service/storage"
 
 	"github.com/jmoiron/sqlx"
 )

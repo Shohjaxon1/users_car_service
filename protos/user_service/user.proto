@@ -11,6 +11,7 @@ service UserService {
     rpc GetAllUserWithCars(GetAllRequest) returns (AllUsersWithCar);
     rpc GetByPhoneNumber(GetByPhoneNumberRequest) returns (User);
     rpc GetAll(GetAllRequest) returns (AllUsers);
+    rpc GiveCarToUser(GiveCartouserRequest) returns (User);
     rpc UpdateUser(User) returns (User);
     rpc DeleteUser(GetByIdRequest) returns (User);
 }
@@ -30,6 +31,11 @@ message User {
     string phone_number = 4;
     string created_at = 8;
     string updated_at = 9;
+}
+
+message GiveCartouserRequest{
+    string id = 1;
+    string carsid = 2;
 }
 
 message GetByIdRequest {

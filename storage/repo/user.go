@@ -1,7 +1,7 @@
 package repo
 
 import (
-	pb "users_car_service/genproto/user_service"
+	pb "student-service/genproto/user_service"
 )
 
 // UserStorageI ...
@@ -10,7 +10,7 @@ type UserStorageI interface {
 	GetById(*pb.GetByIdRequest) (*pb.User, error)
 	GetByPhoneNumber(*pb.GetByPhoneNumberRequest) (*pb.User, error)
 	GetAllUserWithCars(*pb.GetAllRequest) (*pb.AllUsersWithCar, error)
-	GetUserWithCars(*pb.GetByIdRequest) (*pb.AllUsersWithCar,error)
+	GetUserWithCars(*pb.GetByIdRequest) (*pb.AllUsersWithCar, error)
 	GetAll(*pb.GetAllRequest) (*pb.AllUsers, error)
 	Update(*pb.User) (*pb.User, error)
 	Delete(*pb.GetByIdRequest) (*pb.User, error)

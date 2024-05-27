@@ -1,22 +1,17 @@
-package users_car_serviceClient
+package grpc_client
 
 import (
-	"users_car_service/config"
+	"student-service/config"
 )
 
-// users_car_serviceClientI ...
-type users_car_serviceClientI interface {
-}
-
-// users_car_serviceClient ...
-type users_car_serviceClient struct {
+type StudentServiceClient struct {
 	cfg         config.Config
 	connections map[string]interface{}
 }
 
 // New ...
-func New(cfg config.Config) (*users_car_serviceClient, error) {
-	return &users_car_serviceClient{
+func New(cfg config.Config) (*StudentServiceClient, error) {
+	return &StudentServiceClient{
 		cfg:         cfg,
 		connections: map[string]interface{}{},
 	}, nil

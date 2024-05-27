@@ -3,11 +3,11 @@ package main
 import (
 	"net"
 
-	"users_car_service/config"
-	pb "users_car_service/genproto/user_service"
-	"users_car_service/pkg/db"
-	"users_car_service/pkg/logger"
-	users_car_service "users_car_service/service" // Rename the package to avoid conflict
+	"student-service/config"
+	pb "student-service/genproto/user_service"
+	"student-service/pkg/db"
+	"student-service/pkg/logger"
+	student-service "student-service/service" // Rename the package to avoid conflict
 
 	"google.golang.org/grpc"
 )
@@ -28,7 +28,7 @@ func main() {
 		log.Fatal("sqlx connection to postgres error", logger.Error(err))
 	}
 
-	UsersService := users_car_service.NewUserService(connDB, log)
+	UsersService := student-service.NewUserService(connDB, log)
 
 	lis, err := net.Listen("tcp", cfg.RPCPort)
 	if err != nil {

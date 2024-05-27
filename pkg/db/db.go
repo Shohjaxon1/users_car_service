@@ -2,7 +2,7 @@ package db
 
 import (
 	"fmt"
-	"users_car_service/config"
+	"student-service/config"
 
 	"github.com/jmoiron/sqlx"
 	_ "github.com/lib/pq" //postgres drivers

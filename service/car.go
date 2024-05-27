@@ -2,7 +2,7 @@ package service
 
 import (
 	"context"
-	pb "users_car_service/genproto/user_service"
+	pb "student-service/genproto/user_service"
 )
 
 func (s *UserRepo) CreateCar(ctx context.Context, req *pb.Car) (*pb.Car, error) {

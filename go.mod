@@ -1,4 +1,4 @@
-module users_car_service
+module student-service
 
 go 1.22.3
 

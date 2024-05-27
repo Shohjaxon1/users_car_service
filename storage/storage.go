@@ -1,8 +1,8 @@
 package storage
 
 import (
-	"users_car_service/storage/postgres"
-	"users_car_service/storage/repo"
+	"student-service/storage/postgres"
+	"student-service/storage/repo"
 
 	"github.com/jmoiron/sqlx"
 )
@@ -10,7 +10,7 @@ import (
 // IStorage ...
 type IStorage interface {
 	User() repo.UserStorageI
-	Car()  repo.CarStorageI
+	Car() repo.CarStorageI
 }
 
 type storagePg struct {
@@ -24,7 +24,7 @@ func NewStoragePg(db *sqlx.DB) *storagePg {
 	return &storagePg{
 		db:       db,
 		userRepo: postgres.NewUserRepo(db),
-		carRepo: postgres.NewUserRepo(db),
+		carRepo:  postgres.NewUserRepo(db),
 	}
 }
 
